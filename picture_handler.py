@@ -23,6 +23,8 @@ class PictureHandler:
         self.watermark = watermark
         self.date = date
         self.extensions = extensions
+        if not os.path.exists(self.destination):
+            os.mkdir(self.destination)
 
     def do_resize(self, image_path: str):
         if self.resize:
@@ -39,6 +41,7 @@ class PictureHandler:
     def move_to(self, image_path: str):
         full_path_from = os.path.join(self.source, image_path)
         full_path_to = os.path.join(self.destination, image_path)
+        os.path.isdir(full_path_from)
         shutil.move(full_path_from, full_path_to)
 
     def parse_folder(self) -> list:
@@ -58,9 +61,13 @@ class PictureHandler:
 
 
 def main():
-    error_path = os.path.dirname(sys.argv[0])
-    path_from = sys.argv[1]
-    path_to = sys.argv[2]
+    # error_path = os.path.dirname(sys.argv[0])
+    # path_from = sys.argv[1]
+    # path_to = sys.argv[2]
+
+    error_path = 'error.log'
+    path_from = 'unhandled'
+    path_to = 'processed'
 
     picture_handler = PictureHandler(
         source=path_from,
