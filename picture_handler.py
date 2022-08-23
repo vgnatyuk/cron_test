@@ -61,13 +61,9 @@ class PictureHandler:
 
 
 def main():
-    # error_path = os.path.dirname(sys.argv[0])
-    # path_from = sys.argv[1]
-    # path_to = sys.argv[2]
-
-    error_path = 'error.log'
-    path_from = 'unhandled'
-    path_to = 'processed'
+    error_path = os.path.dirname(sys.argv[0])
+    path_from = sys.argv[1]
+    path_to = sys.argv[2]
 
     picture_handler = PictureHandler(
         source=path_from,
